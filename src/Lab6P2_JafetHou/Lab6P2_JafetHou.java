@@ -1,20 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Lab6P2_JafetHou;
 
-/**
- *
- * @author zenot
- */
+import java.util.Scanner;
+
 public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Lab6P2_JafetHou
-     */
+    
     public Lab6P2_JafetHou() {
+        
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,8 +22,154 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_CrearEquipo = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jt_EstadioEquipo = new javax.swing.JTextField();
+        jt_CiudadEquipo = new javax.swing.JTextField();
+        jt_PaisEquipo = new javax.swing.JTextField();
+        jt_NombreEquipo = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jd_CrearJugador = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jt_NombreJug1 = new javax.swing.JTextField();
+        js_EdadJug = new javax.swing.JSpinner();
+        jc_PosicionJug = new javax.swing.JComboBox<>();
+        jb_AgregarJug = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jb_CrearEquipo = new javax.swing.JButton();
+        jb_CrearJug = new javax.swing.JButton();
+        jb_Transferencia = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jm_CrearEquipo = new javax.swing.JMenuItem();
+        jm_CrearJug = new javax.swing.JMenuItem();
+        jm_Transferencia = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Crear Equipo");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 240, -1));
+
+        jLabel3.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Ciudad");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Pais del Equipo");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Nombre del Equipo");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Estadio");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+
+        jt_EstadioEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jt_EstadioEquipo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jt_EstadioEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 200, -1));
+
+        jt_CiudadEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jt_CiudadEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 200, -1));
+
+        jt_PaisEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jt_PaisEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jt_PaisEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 200, -1));
+
+        jt_NombreEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jt_NombreEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 200, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Agregar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 90, 40));
+
+        javax.swing.GroupLayout jd_CrearEquipoLayout = new javax.swing.GroupLayout(jd_CrearEquipo.getContentPane());
+        jd_CrearEquipo.getContentPane().setLayout(jd_CrearEquipoLayout);
+        jd_CrearEquipoLayout.setHorizontalGroup(
+            jd_CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jd_CrearEquipoLayout.setVerticalGroup(
+            jd_CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel3.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel3.setForeground(new java.awt.Color(255, 153, 153));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Crear Jugador");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 240, -1));
+
+        jLabel8.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Edad");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Posicion");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Stencil", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Nombre");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        jt_NombreJug1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jt_NombreJug1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 150, -1));
+
+        js_EdadJug.setModel(new javax.swing.SpinnerNumberModel(15, 15, 45, 1));
+        jPanel3.add(js_EdadJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 150, 30));
+
+        jc_PosicionJug.setBackground(new java.awt.Color(255, 255, 255));
+        jc_PosicionJug.setForeground(new java.awt.Color(0, 0, 0));
+        jc_PosicionJug.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delantero", "Centrocampista", "Defensa", "Portero", " " }));
+        jPanel3.add(jc_PosicionJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 150, 30));
+
+        jb_AgregarJug.setBackground(new java.awt.Color(255, 255, 255));
+        jb_AgregarJug.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AgregarJug.setText("Agregar");
+        jPanel3.add(jb_AgregarJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 100, 40));
+
+        javax.swing.GroupLayout jd_CrearJugadorLayout = new javax.swing.GroupLayout(jd_CrearJugador.getContentPane());
+        jd_CrearJugador.getContentPane().setLayout(jd_CrearJugadorLayout);
+        jd_CrearJugadorLayout.setHorizontalGroup(
+            jd_CrearJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+        );
+        jd_CrearJugadorLayout.setVerticalGroup(
+            jd_CrearJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,7 +180,70 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bienvenido a Boroa League");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 400, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 400, 50));
+
+        jToolBar1.setBackground(new java.awt.Color(153, 204, 255));
+        jToolBar1.setRollover(true);
+
+        jb_CrearEquipo.setBackground(new java.awt.Color(153, 204, 255));
+        jb_CrearEquipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jb_CrearEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        jb_CrearEquipo.setText("Crear Equipo");
+        jb_CrearEquipo.setFocusable(false);
+        jb_CrearEquipo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jb_CrearEquipo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jb_CrearEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearEquipoMouseClicked(evt);
+            }
+        });
+        jToolBar1.add(jb_CrearEquipo);
+
+        jb_CrearJug.setBackground(new java.awt.Color(153, 204, 255));
+        jb_CrearJug.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jb_CrearJug.setForeground(new java.awt.Color(0, 0, 0));
+        jb_CrearJug.setText("Crear Jugadores");
+        jb_CrearJug.setFocusable(false);
+        jb_CrearJug.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jb_CrearJug.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jb_CrearJug);
+
+        jb_Transferencia.setBackground(new java.awt.Color(153, 204, 255));
+        jb_Transferencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jb_Transferencia.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Transferencia.setText("Transferencia");
+        jb_Transferencia.setFocusable(false);
+        jb_Transferencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jb_Transferencia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jb_Transferencia);
+
+        jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 40));
+
+        jMenu1.setText("Opciones");
+
+        jm_CrearEquipo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jm_CrearEquipo.setText("Crear Equipos");
+        jm_CrearEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jm_CrearEquipoMouseClicked(evt);
+            }
+        });
+        jMenu1.add(jm_CrearEquipo);
+
+        jm_CrearJug.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jm_CrearJug.setText("Crear Jugadores");
+        jMenu1.add(jm_CrearJug);
+
+        jm_Transferencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jm_Transferencia.setText("Transferencia");
+        jMenu1.add(jm_Transferencia);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,6 +262,30 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jb_CrearEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearEquipoMouseClicked
+        
+        this.setVisible(false);
+        jd_CrearEquipo.setModal(true);
+        jd_CrearEquipo.pack();
+        jd_CrearEquipo.setResizable(false);
+        jd_CrearEquipo.setLocationRelativeTo(null);
+        jd_CrearEquipo.setVisible(true);
+        
+    }//GEN-LAST:event_jb_CrearEquipoMouseClicked
+
+    private void jm_CrearEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jm_CrearEquipoMouseClicked
+        this.setVisible(false);
+        jd_CrearEquipo.setModal(true);
+        jd_CrearEquipo.pack();
+        jd_CrearEquipo.setResizable(false);
+        jd_CrearEquipo.setLocationRelativeTo(null);
+        jd_CrearEquipo.setVisible(true);
+    }//GEN-LAST:event_jm_CrearEquipoMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -89,12 +318,45 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Lab6P2_JafetHou().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton jb_AgregarJug;
+    private javax.swing.JButton jb_CrearEquipo;
+    private javax.swing.JButton jb_CrearJug;
+    private javax.swing.JButton jb_Transferencia;
+    private javax.swing.JComboBox<String> jc_PosicionJug;
+    private javax.swing.JDialog jd_CrearEquipo;
+    private javax.swing.JDialog jd_CrearJugador;
+    private javax.swing.JMenuItem jm_CrearEquipo;
+    private javax.swing.JMenuItem jm_CrearJug;
+    private javax.swing.JMenuItem jm_Transferencia;
+    private javax.swing.JSpinner js_EdadJug;
+    private javax.swing.JTextField jt_CiudadEquipo;
+    private javax.swing.JTextField jt_EstadioEquipo;
+    private javax.swing.JTextField jt_NombreEquipo;
+    private javax.swing.JTextField jt_NombreJug1;
+    private javax.swing.JTextField jt_PaisEquipo;
     // End of variables declaration//GEN-END:variables
 }
