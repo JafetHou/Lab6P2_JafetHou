@@ -3,6 +3,7 @@ package Lab6P2_JafetHou;
 
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -32,12 +33,12 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jt_EstadioEquipo = new javax.swing.JTextField();
         jt_CiudadEquipo = new javax.swing.JTextField();
         jt_PaisEquipo = new javax.swing.JTextField();
         jt_NombreEquipo = new javax.swing.JTextField();
         jb_AgregarEquipo = new javax.swing.JButton();
         jb_RegresarEquipo = new javax.swing.JButton();
+        jt_EstadioEquipo = new javax.swing.JTextField();
         jd_CrearJugador = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -60,6 +61,10 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jtree_Equipos = new javax.swing.JTree();
         jb_Transferir = new javax.swing.JButton();
         jb_RegresarTransferir = new javax.swing.JButton();
+        jpp_modificar = new javax.swing.JPopupMenu();
+        jm_Modificar = new javax.swing.JMenuItem();
+        jpp_Eliminar = new javax.swing.JPopupMenu();
+        jm_Eliminar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -102,10 +107,6 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jLabel6.setText("Estadio");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
-        jt_EstadioEquipo.setBackground(new java.awt.Color(255, 255, 255));
-        jt_EstadioEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jt_EstadioEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 200, -1));
-
         jt_CiudadEquipo.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jt_CiudadEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 200, -1));
 
@@ -136,11 +137,15 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         });
         jPanel2.add(jb_RegresarEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 80, 40));
 
+        jt_EstadioEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jt_EstadioEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jt_EstadioEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 200, -1));
+
         javax.swing.GroupLayout jd_CrearEquipoLayout = new javax.swing.GroupLayout(jd_CrearEquipo.getContentPane());
         jd_CrearEquipo.getContentPane().setLayout(jd_CrearEquipoLayout);
         jd_CrearEquipoLayout.setHorizontalGroup(
             jd_CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
         jd_CrearEquipoLayout.setVerticalGroup(
             jd_CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,6 +289,12 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
 
+        jm_Modificar.setText("Modificar");
+        jpp_modificar.add(jm_Modificar);
+
+        jm_Eliminar.setText("ELIMINAR");
+        jpp_Eliminar.add(jm_Eliminar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
@@ -418,13 +429,52 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
     private void jb_AgregarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AgregarEquipoMouseClicked
         
-        DefaultTreeModel m = (DefaultTreeModel) jtree_Equipos.getModel();
+        if(jt_NombreEquipo.getText().equals("") ){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese nombre al Equipo");
+            
+        }else if(jt_PaisEquipo.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese pais al Equipo");
+            
+        }else if(jt_CiudadEquipo.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese ciudad al Equipo");
+            
+        }else if(jt_EstadioEquipo.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese estadio al Equipo");
+            
+        }else{    
+            
+            DefaultTreeModel m = (DefaultTreeModel) jtree_Equipos.getModel();
+
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+
+            DefaultMutableTreeNode nodo_Equipos;
+            nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_PaisEquipo.getText(), jt_NombreEquipo.getText(), jt_CiudadEquipo.getText(), jt_EstadioEquipo.getText()));
+
+            DefaultMutableTreeNode pais;
+            pais = new DefaultMutableTreeNode(jt_PaisEquipo.getText());
+
+            DefaultMutableTreeNode posicion;
+            posicion = new DefaultMutableTreeNode((String) jc_PosicionJug.getSelectedItem());
+
+
+            DefaultMutableTreeNode jugador;
+            jugador = new DefaultMutableTreeNode(jt_NombreJug1.getText());
+
+            posicion.add(jugador);
+            nodo_Equipos.add(posicion);
+            pais.add(nodo_Equipos);
+            raiz.add(pais);
+            m.reload();
         
-        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
-        
-        DefaultMutableTreeNode nodo_Equipos;
-        nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_PaisEquipo.getText(), jt_NombreEquipo.getText(), jt_CiudadEquipo.getText(), jt_EstadioEquipo.getText()));
-        
+            jt_PaisEquipo.setText("");
+            jt_NombreEquipo.setText("");
+            jt_CiudadEquipo.setText("");
+            jt_EstadioEquipo.setText("");
+        }
     }//GEN-LAST:event_jb_AgregarEquipoMouseClicked
 
     private void jb_TransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TransferirActionPerformed
@@ -469,19 +519,45 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_SalirMouseClicked
 
     private void jtree_EquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtree_EquiposMouseClicked
-        
+        if(evt.getButton() == 3){
+            int row = jtree_Equipos.getClosestRowForLocation(evt.getX(), evt.getY());
+            
+            jtree_Equipos.setSelectionRow(row);
+            
+            Object c2 = jtree_Equipos.getSelectionPath().getLastPathComponent();
+            
+            nodo_selec = (DefaultMutableTreeNode)c2;
+            
+            if(nodo_selec.getUserObject() instanceof Equipo){
+                Equipo_Selec = (Equipo) nodo_selec.getUserObject();
+                
+                jpp_Eliminar.show(evt.getComponent(), evt.getX(), evt.getY());
+                
+            }else if(nodo_selec.getUserObject() instanceof Jugadores){
+                
+                jug_sele = (Jugadores) nodo_selec.getUserObject();
+                
+                jpp_modificar.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
     }//GEN-LAST:event_jtree_EquiposMouseClicked
 
     private void jb_AgregarJugMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AgregarJugMouseClicked
         
-        DefaultListModel model = (DefaultListModel) jlist_Jugadores.getModel();
-        
-        model.addElement(new Jugadores(jt_NombreJug1.getText(), (String)jc_PosicionJug.getSelectedItem(), (Integer) js_EdadJug.getValue()));
-        
-        jlist_Jugadores.setModel(model);
-        jt_NombreJug1.setText("");
-        js_EdadJug.setValue(15);
-        jc_PosicionJug.setSelectedIndex(0);
+        if(jt_NombreJug1.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese nombre del Jugador");
+            
+        }else{
+            DefaultListModel model = (DefaultListModel) jlist_Jugadores.getModel();
+
+            model.addElement(new Jugadores(jt_NombreJug1.getText(), (String)jc_PosicionJug.getSelectedItem(), (Integer) js_EdadJug.getValue()));
+
+            jlist_Jugadores.setModel(model);
+            jt_NombreJug1.setText("");
+            js_EdadJug.setValue(15);
+            jc_PosicionJug.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_jb_AgregarJugMouseClicked
 
     /**
@@ -561,7 +637,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JList<String> jlist_Jugadores;
     private javax.swing.JMenuItem jm_CrearEquipo;
     private javax.swing.JMenuItem jm_CrearJug;
+    private javax.swing.JMenuItem jm_Eliminar;
+    private javax.swing.JMenuItem jm_Modificar;
     private javax.swing.JMenuItem jm_Transferencia;
+    private javax.swing.JPopupMenu jpp_Eliminar;
+    private javax.swing.JPopupMenu jpp_modificar;
     private javax.swing.JSpinner js_EdadJug;
     private javax.swing.JTextField jt_CiudadEquipo;
     private javax.swing.JTextField jt_EstadioEquipo;
@@ -570,4 +650,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JTextField jt_PaisEquipo;
     private javax.swing.JTree jtree_Equipos;
     // End of variables declaration//GEN-END:variables
+    DefaultMutableTreeNode nodo_selec;
+    Jugadores jug_sele;
+    Equipo Equipo_Selec;
 }
