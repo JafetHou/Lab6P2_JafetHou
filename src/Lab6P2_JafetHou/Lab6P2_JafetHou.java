@@ -34,6 +34,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jt_PaisEquipo = new javax.swing.JTextField();
         jt_NombreEquipo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jb_RegresarEquipo = new javax.swing.JButton();
         jd_CrearJugador = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -44,6 +45,18 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         js_EdadJug = new javax.swing.JSpinner();
         jc_PosicionJug = new javax.swing.JComboBox<>();
         jb_AgregarJug = new javax.swing.JButton();
+        jb_RegresarJug = new javax.swing.JButton();
+        jd_Transferencia = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlist_Jugadores = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtree_Equipos = new javax.swing.JTree();
+        jb_Transferir = new javax.swing.JButton();
+        jb_RegresarTransferir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -107,17 +120,27 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 90, 40));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 90, 40));
+
+        jb_RegresarEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jb_RegresarEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        jb_RegresarEquipo.setText("Regresar");
+        jb_RegresarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegresarEquipoMouseClicked(evt);
+            }
+        });
+        jPanel2.add(jb_RegresarEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 80, 40));
 
         javax.swing.GroupLayout jd_CrearEquipoLayout = new javax.swing.GroupLayout(jd_CrearEquipo.getContentPane());
         jd_CrearEquipo.getContentPane().setLayout(jd_CrearEquipoLayout);
         jd_CrearEquipoLayout.setHorizontalGroup(
             jd_CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
         );
         jd_CrearEquipoLayout.setVerticalGroup(
             jd_CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 153));
@@ -158,7 +181,17 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_AgregarJug.setBackground(new java.awt.Color(255, 255, 255));
         jb_AgregarJug.setForeground(new java.awt.Color(0, 0, 0));
         jb_AgregarJug.setText("Agregar");
-        jPanel3.add(jb_AgregarJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 100, 40));
+        jPanel3.add(jb_AgregarJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 100, 40));
+
+        jb_RegresarJug.setBackground(new java.awt.Color(255, 255, 255));
+        jb_RegresarJug.setForeground(new java.awt.Color(0, 0, 0));
+        jb_RegresarJug.setText("Regresar");
+        jb_RegresarJug.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegresarJugMouseClicked(evt);
+            }
+        });
+        jPanel3.add(jb_RegresarJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 90, 40));
 
         javax.swing.GroupLayout jd_CrearJugadorLayout = new javax.swing.GroupLayout(jd_CrearJugador.getContentPane());
         jd_CrearJugador.getContentPane().setLayout(jd_CrearJugadorLayout);
@@ -169,6 +202,75 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jd_CrearJugadorLayout.setVerticalGroup(
             jd_CrearJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Transferencia");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 250, 70));
+
+        jLabel12.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Equipos");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Stencil", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Jugadores");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+
+        jlist_Jugadores.setBackground(new java.awt.Color(255, 255, 255));
+        jlist_Jugadores.setForeground(new java.awt.Color(0, 0, 0));
+        jlist_Jugadores.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { " " };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jlist_Jugadores);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, 280));
+
+        jtree_Equipos.setBackground(new java.awt.Color(255, 255, 255));
+        jtree_Equipos.setForeground(new java.awt.Color(0, 0, 0));
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        jtree_Equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(jtree_Equipos);
+
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 220, 280));
+
+        jb_Transferir.setBackground(new java.awt.Color(255, 255, 255));
+        jb_Transferir.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Transferir.setText("Transferir ->");
+        jb_Transferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_TransferirActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jb_Transferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
+
+        jb_RegresarTransferir.setBackground(new java.awt.Color(255, 255, 255));
+        jb_RegresarTransferir.setForeground(new java.awt.Color(0, 0, 0));
+        jb_RegresarTransferir.setText("Regresar");
+        jb_RegresarTransferir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_RegresarTransferirMouseClicked(evt);
+            }
+        });
+        jPanel4.add(jb_RegresarTransferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, -1, -1));
+
+        javax.swing.GroupLayout jd_TransferenciaLayout = new javax.swing.GroupLayout(jd_Transferencia.getContentPane());
+        jd_Transferencia.getContentPane().setLayout(jd_TransferenciaLayout);
+        jd_TransferenciaLayout.setHorizontalGroup(
+            jd_TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+        );
+        jd_TransferenciaLayout.setVerticalGroup(
+            jd_TransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -206,6 +308,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_CrearJug.setFocusable(false);
         jb_CrearJug.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_CrearJug.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jb_CrearJug.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_CrearJugMouseClicked(evt);
+            }
+        });
         jToolBar1.add(jb_CrearJug);
 
         jb_Transferencia.setBackground(new java.awt.Color(153, 204, 255));
@@ -215,6 +322,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_Transferencia.setFocusable(false);
         jb_Transferencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jb_Transferencia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jb_Transferencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_TransferenciaMouseClicked(evt);
+            }
+        });
         jToolBar1.add(jb_Transferencia);
 
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 40));
@@ -287,6 +399,43 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jb_TransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TransferirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_TransferirActionPerformed
+
+    private void jb_CrearJugMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearJugMouseClicked
+        this.setVisible(false);
+        jd_CrearJugador.setModal(true);
+        jd_CrearJugador.pack();
+        jd_CrearJugador.setResizable(false);
+        jd_CrearJugador.setLocationRelativeTo(null);
+        jd_CrearJugador.setVisible(true);
+    }//GEN-LAST:event_jb_CrearJugMouseClicked
+
+    private void jb_RegresarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresarEquipoMouseClicked
+        jd_CrearEquipo.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_RegresarEquipoMouseClicked
+
+    private void jb_RegresarTransferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresarTransferirMouseClicked
+        jd_Transferencia.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_RegresarTransferirMouseClicked
+
+    private void jb_RegresarJugMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_RegresarJugMouseClicked
+        jd_CrearJugador.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_RegresarJugMouseClicked
+
+    private void jb_TransferenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TransferenciaMouseClicked
+        this.setVisible(false);
+        jd_Transferencia.setModal(true);
+        jd_Transferencia.pack();
+        jd_Transferencia.setResizable(false);
+        jd_Transferencia.setLocationRelativeTo(null);
+        jd_Transferencia.setVisible(true);
+    }//GEN-LAST:event_jb_TransferenciaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -327,6 +476,9 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -341,14 +493,23 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton jb_AgregarJug;
     private javax.swing.JButton jb_CrearEquipo;
     private javax.swing.JButton jb_CrearJug;
+    private javax.swing.JButton jb_RegresarEquipo;
+    private javax.swing.JButton jb_RegresarJug;
+    private javax.swing.JButton jb_RegresarTransferir;
     private javax.swing.JButton jb_Transferencia;
+    private javax.swing.JButton jb_Transferir;
     private javax.swing.JComboBox<String> jc_PosicionJug;
     private javax.swing.JDialog jd_CrearEquipo;
     private javax.swing.JDialog jd_CrearJugador;
+    private javax.swing.JDialog jd_Transferencia;
+    private javax.swing.JList<String> jlist_Jugadores;
     private javax.swing.JMenuItem jm_CrearEquipo;
     private javax.swing.JMenuItem jm_CrearJug;
     private javax.swing.JMenuItem jm_Transferencia;
@@ -358,5 +519,6 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JTextField jt_NombreEquipo;
     private javax.swing.JTextField jt_NombreJug1;
     private javax.swing.JTextField jt_PaisEquipo;
+    private javax.swing.JTree jtree_Equipos;
     // End of variables declaration//GEN-END:variables
 }
