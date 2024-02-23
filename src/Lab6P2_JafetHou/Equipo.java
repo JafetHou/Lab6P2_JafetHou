@@ -13,6 +13,11 @@ public class Equipo {
         this.estadio = estadio;
     }
 
+    public Equipo(String nombre) {
+        this.nombre = nombre;
+    }
+    
+
     public Equipo() {
     }
 

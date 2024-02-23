@@ -462,7 +462,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
 
             DefaultMutableTreeNode nodo_Equipos;
-            nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_PaisEquipo.getText(), jt_NombreEquipo.getText(), jt_CiudadEquipo.getText(), jt_EstadioEquipo.getText()));
+            nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_NombreEquipo.getText()));
 
             DefaultMutableTreeNode pais;
             pais = new DefaultMutableTreeNode(jt_PaisEquipo.getText());
@@ -587,7 +587,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
             
             ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nueva edad: ")));
             
-            jlist_Jugadores.setModel(modelista);
+            jlist_Jugadores.setModel(modelista); 
         }
     }//GEN-LAST:event_jm_ModificarActionPerformed
 
