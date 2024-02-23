@@ -585,7 +585,9 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
             
             ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setNombre(JOptionPane.showInputDialog("Ingrese nuevo nombre: "));
             
-            ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setEdad((Integer).parseInt(JOptionPane.showInputDialog("Ingrese nueva edad: ")));
+            ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nueva edad: ")));
+            
+            jlist_Jugadores.setModel(modelista);
         }
     }//GEN-LAST:event_jm_ModificarActionPerformed
 
