@@ -241,6 +241,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jlist_Jugadores.setForeground(new java.awt.Color(0, 0, 0));
         jlist_Jugadores.setModel(new DefaultListModel()
         );
+        jlist_Jugadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlist_JugadoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jlist_Jugadores);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, 280));
@@ -290,6 +295,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         );
 
         jm_Modificar.setText("Modificar");
+        jm_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_ModificarActionPerformed(evt);
+            }
+        });
         jpp_modificar.add(jm_Modificar);
 
         jm_Eliminar.setText("ELIMINAR");
@@ -559,6 +569,25 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
             jc_PosicionJug.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jb_AgregarJugMouseClicked
+
+    private void jlist_JugadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlist_JugadoresMouseClicked
+        if(jlist_Jugadores.getSelectedIndex() >= 0){
+            if(evt.isMetaDown()){
+                jpp_modificar.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jlist_JugadoresMouseClicked
+
+    private void jm_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ModificarActionPerformed
+        if(jlist_Jugadores.getSelectedIndex() >= 0){
+            
+            DefaultListModel modelista = (DefaultListModel) jlist_Jugadores.getModel();
+            
+            ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setNombre(JOptionPane.showInputDialog("Ingrese nuevo nombre: "));
+            
+            ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setEdad((Integer).parseInt(JOptionPane.showInputDialog("Ingrese nueva edad: ")));
+        }
+    }//GEN-LAST:event_jm_ModificarActionPerformed
 
     /**
      * @param args the command line arguments
