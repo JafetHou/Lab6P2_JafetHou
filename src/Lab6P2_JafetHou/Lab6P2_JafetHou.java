@@ -2,6 +2,9 @@
 package Lab6P2_JafetHou;
 
 import java.util.Scanner;
+import javax.swing.DefaultListModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
@@ -33,7 +36,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jt_CiudadEquipo = new javax.swing.JTextField();
         jt_PaisEquipo = new javax.swing.JTextField();
         jt_NombreEquipo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jb_AgregarEquipo = new javax.swing.JButton();
         jb_RegresarEquipo = new javax.swing.JButton();
         jd_CrearJugador = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
@@ -63,6 +66,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_CrearEquipo = new javax.swing.JButton();
         jb_CrearJug = new javax.swing.JButton();
         jb_Transferencia = new javax.swing.JButton();
+        jb_Salir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jm_CrearEquipo = new javax.swing.JMenuItem();
@@ -112,15 +116,15 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jt_NombreEquipo.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jt_NombreEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 200, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Agregar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jb_AgregarEquipo.setBackground(new java.awt.Color(255, 255, 255));
+        jb_AgregarEquipo.setForeground(new java.awt.Color(0, 0, 0));
+        jb_AgregarEquipo.setText("Agregar");
+        jb_AgregarEquipo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jb_AgregarEquipoMouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 90, 40));
+        jPanel2.add(jb_AgregarEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 90, 40));
 
         jb_RegresarEquipo.setBackground(new java.awt.Color(255, 255, 255));
         jb_RegresarEquipo.setForeground(new java.awt.Color(0, 0, 0));
@@ -181,6 +185,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_AgregarJug.setBackground(new java.awt.Color(255, 255, 255));
         jb_AgregarJug.setForeground(new java.awt.Color(0, 0, 0));
         jb_AgregarJug.setText("Agregar");
+        jb_AgregarJug.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_AgregarJugMouseClicked(evt);
+            }
+        });
         jPanel3.add(jb_AgregarJug, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 100, 40));
 
         jb_RegresarJug.setBackground(new java.awt.Color(255, 255, 255));
@@ -225,11 +234,8 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
         jlist_Jugadores.setBackground(new java.awt.Color(255, 255, 255));
         jlist_Jugadores.setForeground(new java.awt.Color(0, 0, 0));
-        jlist_Jugadores.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jlist_Jugadores.setModel(new DefaultListModel()
+        );
         jScrollPane1.setViewportView(jlist_Jugadores);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, 280));
@@ -238,6 +244,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jtree_Equipos.setForeground(new java.awt.Color(0, 0, 0));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
         jtree_Equipos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jtree_Equipos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtree_EquiposMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtree_Equipos);
 
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 220, 280));
@@ -331,6 +342,16 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
         jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 40));
 
+        jb_Salir.setBackground(new java.awt.Color(255, 255, 255));
+        jb_Salir.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Salir.setText("Salir");
+        jb_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_SalirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jb_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 90, 30));
+
         jMenu1.setText("Opciones");
 
         jm_CrearEquipo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -395,9 +416,16 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jd_CrearEquipo.setVisible(true);
     }//GEN-LAST:event_jm_CrearEquipoMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jb_AgregarEquipoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AgregarEquipoMouseClicked
         
-    }//GEN-LAST:event_jButton1MouseClicked
+        DefaultTreeModel m = (DefaultTreeModel) jtree_Equipos.getModel();
+        
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+        
+        DefaultMutableTreeNode nodo_Equipos;
+        nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_PaisEquipo.getText(), jt_NombreEquipo.getText(), jt_CiudadEquipo.getText(), jt_EstadioEquipo.getText()));
+        
+    }//GEN-LAST:event_jb_AgregarEquipoMouseClicked
 
     private void jb_TransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TransferirActionPerformed
         // TODO add your handling code here:
@@ -436,6 +464,26 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jd_Transferencia.setVisible(true);
     }//GEN-LAST:event_jb_TransferenciaMouseClicked
 
+    private void jb_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_SalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jb_SalirMouseClicked
+
+    private void jtree_EquiposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtree_EquiposMouseClicked
+        
+    }//GEN-LAST:event_jtree_EquiposMouseClicked
+
+    private void jb_AgregarJugMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_AgregarJugMouseClicked
+        
+        DefaultListModel model = (DefaultListModel) jlist_Jugadores.getModel();
+        
+        model.addElement(new Jugadores(jt_NombreJug1.getText(), (String)jc_PosicionJug.getSelectedItem(), (Integer) js_EdadJug.getValue()));
+        
+        jlist_Jugadores.setModel(model);
+        jt_NombreJug1.setText("");
+        js_EdadJug.setValue(15);
+        jc_PosicionJug.setSelectedIndex(0);
+    }//GEN-LAST:event_jb_AgregarJugMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -473,7 +521,6 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -497,12 +544,14 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton jb_AgregarEquipo;
     private javax.swing.JButton jb_AgregarJug;
     private javax.swing.JButton jb_CrearEquipo;
     private javax.swing.JButton jb_CrearJug;
     private javax.swing.JButton jb_RegresarEquipo;
     private javax.swing.JButton jb_RegresarJug;
     private javax.swing.JButton jb_RegresarTransferir;
+    private javax.swing.JButton jb_Salir;
     private javax.swing.JButton jb_Transferencia;
     private javax.swing.JButton jb_Transferir;
     private javax.swing.JComboBox<String> jc_PosicionJug;
