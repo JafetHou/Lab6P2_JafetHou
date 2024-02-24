@@ -655,42 +655,45 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     }//GEN-LAST:event_jm_EliminarActionPerformed
 
     private void jb_TransferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TransferirMouseClicked
+        DefaultMutableTreeNode NodoS = (DefaultMutableTreeNode) jtree_Equipos.getSelectionPath().getLastPathComponent();
         if(jlist_Jugadores.getSelectedIndex() >= 0){
-            
-            DefaultTreeModel modeltree = (DefaultTreeModel) jtree_Equipos.getModel();
-            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeltree.getRoot();
-            
-            DefaultListModel modelista = (DefaultListModel) jlist_Jugadores.getModel();
-            
-            String nombre, posic;
-            int edad;
-            
-            nombre = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getNombre();
-            posic = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getPosicion();
-            edad = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getEdad();
-            
-            DefaultMutableTreeNode posicion;
-            posicion = new DefaultMutableTreeNode(posic);
-            
-            DefaultMutableTreeNode r = (DefaultMutableTreeNode) raiz.getChildAt(1).getChildAt(0).getChildAt(0);
-            
-            for (int i = 0; i < r.getChildCount(); i++) {
-                System.out.println(r.getChildAt(i));
-            }
-            
-            int centi = -1;
-            for (int i = 0; i < raiz.getChildCount(); i++) {
+            if(NodoS.getUserObject() instanceof Equipo){
+                DefaultTreeModel modeltree = (DefaultTreeModel) jtree_Equipos.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeltree.getRoot();
 
-                if(raiz.getChildAt(i).toString().equals(nodo_selec)){
-                    DefaultMutableTreeNode p;
-                    //p = DefaultMutableTreeNode(new Equipo());
+                DefaultListModel modelista = (DefaultListModel) jlist_Jugadores.getModel();
 
-                    //((DefaultMutableTreeNode))raiz.getChildAt(i)).add(p);
+                String nombre, posic;
+                int edad;
+
+                nombre = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getNombre();
+                posic = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getPosicion();
+                edad = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getEdad();
+
+                //DefaultMutableTreeNode posicion;
+                //posicion = new DefaultMutableTreeNode(posic);
+
+
+                int centi = -1;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if(NodoS.getChildCount() > 0 ){
+                        if(NodoS.getChildAt(i).toString().equalsIgnoreCase(posic)){
+
+                            DefaultMutableTreeNode p = new DefaultMutableTreeNode(nombre);
+                            ((DefaultMutableTreeNode)NodoS.getChildAt(i)).add(p);
+                            centi= 1;
+                        }
+                    }
                 }
+                if(centi == -1){
+                    DefaultMutableTreeNode posicion = new DefaultMutableTreeNode(posic);
+                    DefaultMutableTreeNode jug = new DefaultMutableTreeNode(nombre); 
 
+                    posicion.add(jug);
+                    NodoS.add(posicion);
+                }
+                modeltree.reload();
             }
-            
-            
         }
     }//GEN-LAST:event_jb_TransferirMouseClicked
 
