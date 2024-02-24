@@ -63,6 +63,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_RegresarTransferir = new javax.swing.JButton();
         jpp_modificar = new javax.swing.JPopupMenu();
         jm_Modificar = new javax.swing.JMenuItem();
+        jm_EliminarJug = new javax.swing.JMenuItem();
         jpp_Eliminar = new javax.swing.JPopupMenu();
         jm_Eliminar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
@@ -266,9 +267,9 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_Transferir.setBackground(new java.awt.Color(255, 255, 255));
         jb_Transferir.setForeground(new java.awt.Color(0, 0, 0));
         jb_Transferir.setText("Transferir ->");
-        jb_Transferir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_TransferirActionPerformed(evt);
+        jb_Transferir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_TransferirMouseClicked(evt);
             }
         });
         jPanel4.add(jb_Transferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
@@ -302,7 +303,20 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         });
         jpp_modificar.add(jm_Modificar);
 
+        jm_EliminarJug.setText("Eliminar");
+        jm_EliminarJug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_EliminarJugActionPerformed(evt);
+            }
+        });
+        jpp_modificar.add(jm_EliminarJug);
+
         jm_Eliminar.setText("ELIMINAR");
+        jm_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_EliminarActionPerformed(evt);
+            }
+        });
         jpp_Eliminar.add(jm_Eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -461,23 +475,31 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
 
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
 
-            DefaultMutableTreeNode nodo_Equipos;
-            nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_NombreEquipo.getText()));
-
             DefaultMutableTreeNode pais;
-            pais = new DefaultMutableTreeNode(jt_PaisEquipo.getText());
-
-            DefaultMutableTreeNode posicion;
-            posicion = new DefaultMutableTreeNode((String) jc_PosicionJug.getSelectedItem());
-
-
-            DefaultMutableTreeNode jugador;
-            jugador = new DefaultMutableTreeNode(jt_NombreJug1.getText());
-
-            posicion.add(jugador);
-            nodo_Equipos.add(posicion);
-            pais.add(nodo_Equipos);
-            raiz.add(pais);
+            DefaultMutableTreeNode nodo_Equipos;
+            
+            boolean doble = false;
+            
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                
+                if(raiz.getChildAt(i).toString().equalsIgnoreCase(jt_PaisEquipo.getText())){
+                   
+                    nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_PaisEquipo.getText(), jt_NombreEquipo.getText()));
+                    ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(nodo_Equipos);
+                    doble = true;
+                }
+                
+            }
+            
+            if(doble == false){
+                
+                pais = new DefaultMutableTreeNode(jt_PaisEquipo.getText());
+                nodo_Equipos = new DefaultMutableTreeNode(new Equipo(jt_PaisEquipo.getText(), jt_NombreEquipo.getText()));
+                
+                pais.add(nodo_Equipos);
+                raiz.add(pais); 
+            }
+            
             m.reload();
         
             jt_PaisEquipo.setText("");
@@ -486,10 +508,6 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
             jt_EstadioEquipo.setText("");
         }
     }//GEN-LAST:event_jb_AgregarEquipoMouseClicked
-
-    private void jb_TransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_TransferirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jb_TransferirActionPerformed
 
     private void jb_CrearJugMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_CrearJugMouseClicked
         this.setVisible(false);
@@ -591,6 +609,35 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jm_ModificarActionPerformed
 
+    private void jm_EliminarJugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_EliminarJugActionPerformed
+        if(jlist_Jugadores.getSelectedIndex() >= 0){
+            
+            DefaultListModel mode = (DefaultListModel)jlist_Jugadores.getModel();
+            
+            mode.remove(jlist_Jugadores.getSelectedIndex());
+            jlist_Jugadores.setModel(mode);
+            JOptionPane.showMessageDialog(this, "Jugador Eliminado exitosamente");
+        }
+    }//GEN-LAST:event_jm_EliminarJugActionPerformed
+
+    private void jm_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_EliminarActionPerformed
+        
+        int resp = JOptionPane.showConfirmDialog(this, "Desea eliminar equipo");
+        
+        if(resp == JOptionPane.OK_OPTION){
+            
+            DefaultTreeModel  m = (DefaultTreeModel) jtree_Equipos.getModel();
+            
+            m.removeNodeFromParent(nodo_selec);
+            
+            m.reload();
+        }
+    }//GEN-LAST:event_jm_EliminarActionPerformed
+
+    private void jb_TransferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TransferirMouseClicked
+        
+    }//GEN-LAST:event_jb_TransferirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -669,6 +716,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JMenuItem jm_CrearEquipo;
     private javax.swing.JMenuItem jm_CrearJug;
     private javax.swing.JMenuItem jm_Eliminar;
+    private javax.swing.JMenuItem jm_EliminarJug;
     private javax.swing.JMenuItem jm_Modificar;
     private javax.swing.JMenuItem jm_Transferencia;
     private javax.swing.JPopupMenu jpp_Eliminar;
