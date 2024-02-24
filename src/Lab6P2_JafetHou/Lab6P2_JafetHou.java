@@ -620,12 +620,28 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         if(jlist_Jugadores.getSelectedIndex() >= 0){
             
             DefaultListModel modelista = (DefaultListModel) jlist_Jugadores.getModel();
+            String NuevoNombre = JOptionPane.showInputDialog(this, "Ingrese nuevo nombre: ");
+            int NuevaEdad = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese nueva Edad: "));
             
-            ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setNombre(JOptionPane.showInputDialog("Ingrese nuevo nombre: "));
+            boolean correcto = false;
+            for (int i = 0; i < NuevoNombre.length(); i++) {
+                if(Character.isDigit(NuevoNombre.charAt(i))){
+                    correcto = true;
+                    break;
+                }
+            }
+            if(correcto == true){
+                JOptionPane.showMessageDialog(this, "Mensaje incorrecto");
+            }else if(NuevaEdad >= 15 && NuevaEdad <= 45){
+                
+                ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setNombre(NuevoNombre);
+                ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setEdad(NuevaEdad);
             
-            ((Jugadores) modelista.get(jlist_Jugadores.getSelectedIndex())).setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nueva edad: ")));
-            
-            jlist_Jugadores.setModel(modelista); 
+                jlist_Jugadores.setModel(modelista); 
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "Edad incorrecta");
+            } 
         }
     }//GEN-LAST:event_jm_ModificarActionPerformed
 
@@ -669,10 +685,6 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
                 nombre = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getNombre();
                 posic = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getPosicion();
                 edad = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getEdad();
-
-                //DefaultMutableTreeNode posicion;
-                //posicion = new DefaultMutableTreeNode(posic);
-
 
                 int centi = -1;
                 for (int i = 0; i < raiz.getChildCount(); i++) {
