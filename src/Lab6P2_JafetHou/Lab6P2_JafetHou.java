@@ -73,6 +73,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jb_CrearJug = new javax.swing.JButton();
         jb_Transferencia = new javax.swing.JButton();
         jb_Salir = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jm_CrearEquipo = new javax.swing.JMenuItem();
@@ -328,7 +329,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Bienvenido a Boroa League");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 400, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 400, 50));
 
         jToolBar1.setBackground(new java.awt.Color(153, 204, 255));
         jToolBar1.setRollover(true);
@@ -385,7 +386,11 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
                 jb_SalirMouseClicked(evt);
             }
         });
-        jPanel1.add(jb_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 90, 30));
+        jPanel1.add(jb_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 90, 30));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/WhatsApp Image 2024-02-23 at 13.47.17.jpeg"))); // NOI18N
+        jLabel14.setText("jLabel14");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 400, 270));
 
         jMenu1.setText("Opciones");
 
@@ -396,14 +401,29 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
                 jm_CrearEquipoMouseClicked(evt);
             }
         });
+        jm_CrearEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_CrearEquipoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jm_CrearEquipo);
 
         jm_CrearJug.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jm_CrearJug.setText("Crear Jugadores");
+        jm_CrearJug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_CrearJugActionPerformed(evt);
+            }
+        });
         jMenu1.add(jm_CrearJug);
 
         jm_Transferencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jm_Transferencia.setText("Transferencia");
+        jm_Transferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_TransferenciaActionPerformed(evt);
+            }
+        });
         jMenu1.add(jm_Transferencia);
 
         jMenuBar1.add(jMenu1);
@@ -635,8 +655,71 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     }//GEN-LAST:event_jm_EliminarActionPerformed
 
     private void jb_TransferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_TransferirMouseClicked
-        
+        if(jlist_Jugadores.getSelectedIndex() >= 0){
+            
+            DefaultTreeModel modeltree = (DefaultTreeModel) jtree_Equipos.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeltree.getRoot();
+            
+            DefaultListModel modelista = (DefaultListModel) jlist_Jugadores.getModel();
+            
+            String nombre, posic;
+            int edad;
+            
+            nombre = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getNombre();
+            posic = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getPosicion();
+            edad = ((Jugadores)modelista.get(jlist_Jugadores.getSelectedIndex())).getEdad();
+            
+            DefaultMutableTreeNode posicion;
+            posicion = new DefaultMutableTreeNode(posic);
+            
+            DefaultMutableTreeNode r = (DefaultMutableTreeNode) raiz.getChildAt(1).getChildAt(0).getChildAt(0);
+            
+            for (int i = 0; i < r.getChildCount(); i++) {
+                System.out.println(r.getChildAt(i));
+            }
+            
+            int centi = -1;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+
+                if(raiz.getChildAt(i).toString().equals(nodo_selec)){
+                    DefaultMutableTreeNode p;
+                    //p = DefaultMutableTreeNode(new Equipo());
+
+                    //((DefaultMutableTreeNode))raiz.getChildAt(i)).add(p);
+                }
+
+            }
+            
+            
+        }
     }//GEN-LAST:event_jb_TransferirMouseClicked
+
+    private void jm_CrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_CrearEquipoActionPerformed
+        this.setVisible(false);
+        jd_CrearEquipo.setModal(true);
+        jd_CrearEquipo.pack();
+        jd_CrearEquipo.setResizable(false);
+        jd_CrearEquipo.setLocationRelativeTo(null);
+        jd_CrearEquipo.setVisible(true);
+    }//GEN-LAST:event_jm_CrearEquipoActionPerformed
+
+    private void jm_CrearJugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_CrearJugActionPerformed
+        this.setVisible(false);
+        jd_CrearJugador.setModal(true);
+        jd_CrearJugador.pack();
+        jd_CrearJugador.setResizable(false);
+        jd_CrearJugador.setLocationRelativeTo(null);
+        jd_CrearJugador.setVisible(true);
+    }//GEN-LAST:event_jm_CrearJugActionPerformed
+
+    private void jm_TransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_TransferenciaActionPerformed
+        this.setVisible(false);
+        jd_Transferencia.setModal(true);
+        jd_Transferencia.pack();
+        jd_Transferencia.setResizable(false);
+        jd_Transferencia.setLocationRelativeTo(null);
+        jd_Transferencia.setVisible(true);
+    }//GEN-LAST:event_jm_TransferenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -680,6 +763,7 @@ public class Lab6P2_JafetHou extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

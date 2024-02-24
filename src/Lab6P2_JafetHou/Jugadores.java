@@ -10,6 +10,10 @@ public class Jugadores {
     public Jugadores() {
     }
 
+    public Jugadores(String posicion) {
+        this.posicion = posicion;
+    }
+
     public Jugadores(String nombre, String posicion, int edad) {
         this.nombre = nombre;
         this.posicion = posicion;
